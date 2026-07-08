@@ -19,7 +19,7 @@ Say any of these in a session where the skill is installed:
 - `think like fable` / `act like fable`
 - `mythos mode`
 
-It also triggers implicitly on high-stakes, multi-step work (debugging stubborn failures, cross-file refactors, migrations, production changes), and deactivates with `fable mode off`.
+It also triggers implicitly on work where a careless shortcut would be expensive to undo (production changes, data migrations, destructive operations, stubborn debugging), and deactivates with `fable mode off`.
 
 ## Installation
 
@@ -27,14 +27,14 @@ It also triggers implicitly on high-stakes, multi-step work (debugging stubborn 
 
 Copy the skill folder into your user skills directory:
 
-**Windows (PowerShell)**
+**Windows (PowerShell)** — invoked with `-ExecutionPolicy Bypass` because stock Windows blocks running `.ps1` scripts directly:
 ```powershell
-.\install.ps1
+powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
 **macOS / Linux**
 ```bash
-./install.sh
+sh install.sh
 ```
 
 Or manually: copy `skills/fable-mode/` to `~/.claude/skills/fable-mode/`.
@@ -45,7 +45,7 @@ Copy `skills/fable-mode/` into `<your-project>/.claude/skills/fable-mode/`.
 
 ### Claude.ai / Claude Desktop
 
-Zip the `skills/fable-mode/` folder (the zip must contain `SKILL.md` at the top level of the skill folder), rename it `fable-mode.skill`, and upload it via **Settings → Capabilities → Skills**.
+Zip the `skills/fable-mode/` folder (the zip should contain the `fable-mode` folder with `SKILL.md` inside it) and upload the `.zip` as-is via **Settings → Capabilities → Skills**. A ready-made `dist/fable-mode.zip` is included.
 
 ## Verifying it's installed
 
